@@ -19,7 +19,7 @@ func main() {
 
 	// Iterate over slice
 	for i, card := range cards {
-		fmt.Println(i, card)
+		fmt.Println(i, "-", card)
 	}
 }
 

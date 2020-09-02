@@ -3,7 +3,9 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"math/rand"
 	"strings"
+	"time"
 )
 
 // We will create a "deck" type to hold the information for a deck of cards
@@ -78,4 +80,17 @@ func openFromFile(filename string) deck {
 	strDeck := string([]byte(byteslice))
 	strSlice := strings.Split(strDeck, ",")
 	return deck(strSlice)
+}
+
+func (d deck) shuffle() {
+	// Create True Random Number Generator using Time.UnixNano
+	seed := time.Now().UnixNano()
+	source := rand.NewSource(seed)
+	r := rand.New(source)
+
+	for i := range d {
+		// swp_i := rand.Intn(len(d) - 1)
+		swp_i := r.Intn(len(d) - 1)
+		d[i], d[swp_i] = d[swp_i], d[i]
+	}
 }

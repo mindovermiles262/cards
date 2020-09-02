@@ -9,8 +9,10 @@ func main() {
 	// remainingDeck.print()
 
 	// fmt.Println(cards.toString())
-	cards.save("deck.csv")
+	// cards.save("deck.csv")
 
-	restoredDeck := openFromFile("deck.csv")
-	restoredDeck.print()
+	// restoredDeck := openFromFile("deck.csv")
+	// restoredDeck.print()
+	cards.shuffle()
+	cards.print()
 }

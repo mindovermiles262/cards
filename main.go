@@ -2,57 +2,30 @@ package main
 
 import "fmt"
 
-type person struct {
-	firstName string
-	lastName  string
-	age       int
-	contactInfo
-}
-
-type contactInfo struct {
-	email   string
-	zipCode string
-}
-
 func main() {
-	// john := person{"John", "Steinbeck", 66}
-
-	// john := person{
-	// 	firstName: "John",
-	// 	lastName:  "Steinbeck",
-	// 	age:       66,
-	// }
-
-	var john person
-	john.firstName = "John"
-	john.lastName = "Steinbeck"
-	john.age = 66
-	john.contactInfo = contactInfo{
-		email:   "john@gmail.com",
-		zipCode: "90210",
+	colors := map[string]string{
+		"red":   "#ff0000",
+		"white": "#ffffff",
+		"black": "#000000",
 	}
 
-	// fmt.Println(john.contact.email)
-	// fmt.Printf("%+v\n", john)
-	// john.print()
+	// var colors map[string]string
 
-	// john.updateName("Jonathan")
-	// john.print() //=> "John"
+	// colors := make(map[string]string)
 
-	// johnPointer := &john
-	// johnPointer.updateName("Jonathan") // Updates the memory address for "John"
-	// john.print()                       //=> "Jonathan"
+	// Add data to map
+	colors["green"] = "#00ff00"
 
-	// Shortcut to deal with pointers. Golang allows us to call a function that
-	// requires a pointer by either the pointer or instance.
-	john.updateName("Jonathan")
-	john.print()
+	// Remove data from map
+	delete(colors, "green")
+
+	// fmt.Println(colors)
+
+	printMap(colors)
 }
 
-func (p person) print() {
-	fmt.Printf("%+v\n", p)
-}
-
-func (p *person) updateName(newFirstName string) {
-	p.firstName = newFirstName
+func printMap(c map[string]string) {
+	for color, hex := range c {
+		fmt.Println("The color", color, "has the hex code of:", hex)
+	}
 }
